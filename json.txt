@@ -1,0 +1,1 @@
+b={book:[{isbn:1234,price:58,edition:4,title:'life',author:'Jenifer'}]}
