@@ -1,0 +1,1 @@
+a={Book:[{ISBN:611,Price:780,Edition:15,Title:'Lory',Author:'Joahn'}]}
