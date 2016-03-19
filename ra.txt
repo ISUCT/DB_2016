@@ -1,0 +1,19 @@
+\select_{name="Ami"}Person;(пример)
+
+
+\project_{pizza}(\select_{age>20 and gender="female"}Person \join Eats); (1)
+ 
+
+\project_{name}(\select_{pizzeria="Straw Hat"}Serves \join (\select_{gender="female"}Person \join Eats); (2)
+
+
+
+\project_{pizzeria}(\select_{price<10} Serves \join (\project_{pizza}(\select_{name="Amy"}Eats) \intersect \project_{pizza}(\select_{name="Fay"}Eats))) ; (4)
+
+
+
+\project_{pizzeria}(\select_{name="Amy" or name="Fay"}Eats \join \select_{price<10} Serves); (3)
+
+
+
+\project_{name}(\select_{pizzeria="Dominos"}Serves \join Eats) \diff \project_{name}(\select_{pizzeria="Dominos"}Frequents); (5)
