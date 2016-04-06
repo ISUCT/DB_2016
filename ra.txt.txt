@@ -13,3 +13,6 @@
 
 5) \project_{name}(\select_{pizzeria="Dominos"} Serves \join Eats) \diff (\project_{name}(\select_{pizzeria="Dominos"} Frequents));
 
+6) \project_{pizza} (\select_{age<24} Person \join Eats) \union (\project_{pizza} (\select_{price<10} Serves));
+
+ \project_{age} (\select_{pizza="mushroom"} Eats \join Person);
