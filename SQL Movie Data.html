@@ -1,0 +1,2472 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, target-densitydpi=device-dpi">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" type="image/x-icon" href="http://class2go.stanford.edu/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="SQL%20Movie%20Data_files/bootstrap.css">
+    <link rel="stylesheet" href="SQL%20Movie%20Data_files/responsive.css">
+    <link rel="stylesheet" href="SQL%20Movie%20Data_files/jquery-ui.css">
+    <link rel="stylesheet" href="SQL%20Movie%20Data_files/body.css">
+    <link rel="stylesheet" href="SQL%20Movie%20Data_files/divs.css">
+    <link rel="stylesheet" href="SQL%20Movie%20Data_files/analogclock.css">
+    <!--[if IE 7]>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome-ie7.css">
+    <![endif]-->
+    <script src="SQL%20Movie%20Data_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript" src="SQL%20Movie%20Data_files/jquery.js"></script>
+    <!--[if lte IE 8]>
+        <script type="text/javascript" src="/static/js/core/respond.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+            alert("Warning: you are using an unsupported browser\nand will be unable to save or submit work!\n\nWe suggest you use either Mozilla Firefox or\nGoogle Chrome.");
+            });
+        </script>
+    <![endif]-->
+    <script type="text/javascript" src="SQL%20Movie%20Data_files/jquery-ui.js"></script>
+    
+    
+    
+<script type="text/x-mathjax-config;executed=true">
+    MathJax.Hub.Config({
+                       tex2jax: {inlineMath: [['$$','$$']],
+                       displayMath: [['\\[','\\]']]}
+                       });
+    </script>
+
+<script type="text/javascript" src="SQL%20Movie%20Data_files/MathJax.js">
+    </script>
+
+
+
+    <title> Stanford Class2Go | Introduction to Databases | SQL Movie Data </title>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuTitle {background-color: #CCCCCC; margin: -5px 0 0 0; text-align: center; font-style: italic; font-size: 80%; color: #444444; padding: 2px 0; overflow: hidden}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style></head>
+
+<body class=""><div style="display: none;" id="MathJax_Message"></div>
+    <div id="viewport">
+      
+        <div id="global-header">
+            <h1 class="stanford-logo">
+            	
+                <a href="http://www.stanford.edu/">
+                    <img src="SQL%20Movie%20Data_files/header-stanford-logo.png" alt="Stanford University" width="160">
+                    Stanford University
+                </a>
+                
+            </h1>
+            <p id="skip-nav"><a href="#main-content" class="hidden-accessible">Jump to content</a></p>
+        </div>
+        <div id="top-content"></div>
+      
+        <div id="c2g_layout_topbar">        
+            
+                
+<div class="navbar">
+    <div class="navbar-inner nav-collapse collapse">
+        <div class="container-fluid">
+            <h2 id="main-nav-heading" class="hidden-accessible">Course Sections</h2>
+            <ul class="nav" role="navigation" aria-labelledby="main-nav-heading">
+                <li>
+                    <a href="http://class2go.stanford.edu/db/Winter2013">Home</a>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle closed" data-toggle="dropdown">Course Info
+			<em class="caret"></em>
+			<span class="hidden-accessible">, collapsed, click to expand</span>
+		    </a>
+                    <ul class="dropdown-menu">
+                        
+                            <li><a href="http://class2go.stanford.edu/db/Winter2013/pages/overview">Overview</a></li>
+                        
+                            <li><a href="http://class2go.stanford.edu/db/Winter2013/pages/schedule">Course Schedule</a></li>
+                        
+                            <li><a href="http://class2go.stanford.edu/db/Winter2013/pages/grading">Due Dates and Grading</a></li>
+                        
+                            <li><a href="http://class2go.stanford.edu/db/Winter2013/pages/readings">Textbook Readings</a></li>
+                        
+                            <li><a href="http://class2go.stanford.edu/db/Winter2013/pages/faq">FAQ</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+		
+		<li class="dropdown active">
+		    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			Course Materials
+			
+			    <em class="caret"></em>
+			    <span class="hidden-accessible">, collapsed, click to expand</span>
+			
+		    </a>
+		    
+		    <ul class="dropdown-menu">
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/228">Introduction</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/230">Relational Databases</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/232">XML Data</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/234">JSON Data</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/236">Relational Algebra</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/238">SQL</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/240">Relational Design Theory</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/242">Querying XML</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/244">Unified Modeling Language</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/246">Indexes</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/250">Transactions</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/248">Constraints and Triggers</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/252">Views</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/254">Authorization</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/256">Recursion</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/258">On-Line Analytical Processing</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/260">NoSQL Systems</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/778">Exams</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/594">Materials</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/618">Software Guides</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/604">Extra Problems</a></li>
+			
+			    <li><a href="http://class2go.stanford.edu/db/Winter2013/materials/1050">Surveys</a></li>
+			
+			<li class="divider"></li>
+			<li><a href="http://class2go.stanford.edu/db/Winter2013/materials">Show all</a></li>
+		    </ul>
+		    
+                </li>
+		
+                
+                <li>
+                    <a href="http://class2go.stanford.edu/db/Winter2013/videos">Videos</a>
+                </li>
+                
+                
+                <li>
+                    <a href="http://class2go.stanford.edu/db/Winter2013/problemsets">Quizzes</a>
+                </li>
+                
+                
+                <li>
+                    <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises">Interactive Exercises</a>
+                </li>
+                
+                
+                <li>
+                    <a href="http://class2go.stanford.edu/db/Winter2013/exams">Exams</a>
+                </li>
+                
+                
+                <li>
+                    <a href="http://class2go.stanford.edu/db/Winter2013/surveys">Surveys</a>
+                </li>
+                
+                <li>
+                    <a href="http://class2go.stanford.edu/db/Winter2013/forums">Forum</a>
+                </li>
+                
+                <li class="visible-phone">
+                    <a href="http://class2go.stanford.edu/accounts/profile">My Account</a>
+                </li>
+                <li class="visible-phone">
+                    <a href="http://class2go.stanford.edu/accounts/logout">Logout</a>
+                </li>
+                
+                
+            </ul>
+            <!-- <div id="PacTime" class="pull-right">29th Mar, 2013 - 11:11 AM PDT</div>-->
+        </div>
+    </div>
+</div>
+
+            
+            
+            <div class="row-fluid" style="position:relative;">
+                
+<div class="pull-left page-title">
+    <h2> SQL Movie Data (<a href="http://class2go.stanford.edu/db/Winter2013">Introduction to Databases</a>)</h2>
+</div>
+
+        
+                
+                    
+                
+            </div>
+            
+            
+                <div class="top-nav">
+                    <ul class="unstyled">
+                        
+                            <li>
+                                <form action="/accounts/logout?next=/db/Winter2013" method="POST">
+                                    <input id="login_button" class="btn logout hidden-phone" value="Logout" type="submit">
+                                    <div style="display:none"><input name="csrfmiddlewaretoken" value="d2MZAjKSsQNeSg8hxQklUHVSF9SBMdIZ" type="hidden"></div>
+                                </form>
+                            </li>
+                        <li class="hidden-phone"><span> Welcome <strong><a href="http://class2go.stanford.edu/accounts/profile"> Eugeny Konstantinov </a></strong>!</span></li>
+                        
+                        <li class="visible-phone"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><em class="icon-reorder"></em></a></li>
+                        
+                        <li id="clock">
+                            <!--<em class="icon-time"></em>-->
+                            <span class="hour-11" id="clockHours">
+                                <span class="minute-11" id="clockMinutes"></span>
+                            </span>
+                            <div id="clock-bubble">
+                                <span><strong class="hours">11</strong>:<strong class="minutes">11</strong> <strong class="ampm">AM</strong> <strong>PDT</strong></span>
+                            </div>
+                        </li>
+                        <!--
+                            <li id="PacTime"><span><strong class="hours">11</strong>:<strong class="minutes">11</strong> <strong class="ampm">AM</strong> PDT</span></li>
+                        -->
+                    </ul>
+                </div>
+            
+        </div>
+        
+        
+        
+
+
+
+
+
+<div id="main-content" class="container-fluid body-content" role="main">
+    <div id="main-column-container" class="row-fluid">
+        
+<div id="c2g_layout_l_column" class="span3">
+
+
+
+    <ul id="left-nav" class="well tight nav" role="navigation" aria-labelledby="sidebar-nav-heading-0">
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-228" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-228" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Introduction
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-228">
+                        
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-pre-course-survey">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/surveys/pre-course-survey" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Pre-course survey</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-01-01-introduction">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/01-01-introduction" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Introduction</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-230" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-230" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Relational Databases
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-230">
+                        
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-02-01-relational-model">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/02-01-relational-model" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>The Relational Model</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-02-02-querying-relational-databases">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/02-02-querying-relational-databases" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Querying Relational Databases</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-232" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-232" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            XML Data
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-232">
+                        
+                        
+                            
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-03-01-well-formed-xml">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/03-01-well-formed-xml" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Well-formed XML</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-03-02-dtds-ids-idrefs">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/03-02-dtds-ids-idrefs" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>DTDs, IDs, and IDREFs</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-03-03-xml-schema">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/03-03-xml-schema" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>XML Schema</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-XMLQuiz">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/problemsets#hashtag_XMLQuiz" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>XML Quiz</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-DTDExercises">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/DTDExercises" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>DTD Exercises</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-234" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-234" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            JSON Data
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-234">
+                        
+                        
+                            
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-04-01-json-intro">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/04-01-json-intro" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>JSON Introduction</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-04-02-json-demo">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/04-02-json-demo" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>JSON Demo</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-JSONQuiz">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/problemsets#hashtag_JSONQuiz" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>JSON Quiz</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-236" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-236" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Relational Algebra
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-236">
+                        
+                            <li><span class="leftnav-subtitle">Prerequisite: Relational Databases</span></li>
+                        
+                        
+                            
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-05-01-relational-algebra-1">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/05-01-relational-algebra-1" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Relational Algebra part 1</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-05-02-relational-algebra-2">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/05-02-relational-algebra-2" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Relational Algebra part 2</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-RelationalAlgebraQuiz">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/problemsets#hashtag_RelationalAlgebraQuiz" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Relational Algebra Quiz</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-RelationalAlgebraExercisescoreset">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises#hashtag_RelationalAlgebraExercisescoreset" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Relational Algebra Exercises (core set)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-RelationalAlgebraExerciseschallenge">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/RelationalAlgebraExerciseschallenge" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Relational Algebra Exercises (challenge-level)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-238" class="nav-header accordion-heading expanded" data-toggle="collapse" data-target="#sidebar-nav-238" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            SQL
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse in" id="sidebar-nav-238">
+                        
+                            <li><span class="leftnav-subtitle">Prerequisite: Relational Databases; Recommended: Relational Algebra</span></li>
+                        
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-06-01-introduction-to-SQL">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/06-01-introduction-to-SQL" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Introduction to SQL</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-06-02-basic-select-statement">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/06-02-basic-select-statement" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Basic Select Statement</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-06-03-table-variables-set-operators">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/06-03-table-variables-set-operators" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Table Variables and Set Operators</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-06-04-subqueries-in-where">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/06-04-subqueries-in-where" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Subqueries in WHERE</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-06-05-subqueries-in-from-select">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/06-05-subqueries-in-from-select" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Subqueries in FROM and SELECT</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-06-06-aggregation">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/06-06-aggregation" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Aggregation</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-06-07-null-values">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/06-07-null-values" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>NULL Values</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-06-08-data-modification-statements">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/06-08-data-modification-statements" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Data Modification Statements</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-06-055-join-operators">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/06-055-join-operators" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Join Operators</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-SQLMovie-RatingQueryExercisescoreset">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises#hashtag_SQLMovie-RatingQueryExercisescoreset" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>SQL Movie-Rating Query Exercises (core set)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-SQLMovie-RatingQueryExerciseschallenge">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/SQLMovie-RatingQueryExerciseschallenge" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>SQL Movie-Rating Query Exercises (challenge-level)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-SQLMovie-RatingQueryExercisesextrapractice">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/SQLMovie-RatingQueryExercisesextrapractice" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>SQL Movie-Rating Query Exercises (extra practice)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-SQLSocial-NetworkQueryExercisescoreset">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises#hashtag_SQLSocial-NetworkQueryExercisescoreset" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>SQL Social-Network Query Exercises (core set)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-SQLSocial-NetworkQueryExerciseschallenge">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/SQLSocial-NetworkQueryExerciseschallenge" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>SQL Social-Network Query Exercises (challenge-level)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-SQLSocial-NetworkQueryExercisesextrapractice">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/SQLSocial-NetworkQueryExercisesextrapractice" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>SQL Social-Network Query Exercises (extra practice)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-SQLMovie-RatingModificationExercises">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/SQLMovie-RatingModificationExercises" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>SQL Movie-Rating Modification Exercises</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-SQLSocial-NetworkModificationExercises">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/SQLSocial-NetworkModificationExercises" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>SQL Social-Network Modification Exercises</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-240" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-240" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Relational Design Theory
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-240">
+                        
+                            <li><span class="leftnav-subtitle">Prerequisite: Relational Algebra</span></li>
+                        
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-07-01-relational-design-overview">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/07-01-relational-design-overview" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Relational Design Overview</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-07-02-functional-dependencies">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/07-02-functional-dependencies" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Functional Dependencies</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-07-03-bcnf">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/07-03-bcnf" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Boyce-Codd Normal Form</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-07-04-multivalued-dependencies">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/07-04-multivalued-dependencies" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Multivalued Dependencies</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-07-05-shortcomings-bcnf-4nf">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/07-05-shortcomings-bcnf-4nf" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Shortcomings of BCNF and 4NF</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-FunctionalDependenciesQuiz">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/problemsets#hashtag_FunctionalDependenciesQuiz" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Functional Dependencies Quiz</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-MultivaluedDependenciesQuiz">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/problemsets#hashtag_MultivaluedDependenciesQuiz" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Multivalued Dependencies Quiz</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-NormalizationQuiz">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/problemsets#hashtag_NormalizationQuiz" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Normalization Quiz</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-242" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-242" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Querying XML
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-242">
+                        
+                            <li><span class="leftnav-subtitle">Prerequisite: XML Data</span></li>
+                        
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-08-01-xpath-intro">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/08-01-xpath-intro" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>XPath Introduction</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-08-02-xpath-demo">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/08-02-xpath-demo" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>XPath Demo</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-08-03-xquery-intro">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/08-03-xquery-intro" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>XQuery Introduction</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-08-04-xquery-demo">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/08-04-xquery-demo" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>XQuery Demo</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-08-05-xslt">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/08-05-xslt" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>XSLT</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-XMLCourse-CatalogXPathandXQueryExercisescoreset">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/XMLCourse-CatalogXPathandXQueryExercisescoreset" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>XML Course-Catalog XPath and XQuery Exercises (core set)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-XMLCourse-CatalogXPathandXQueryExerciseschallenge">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/XMLCourse-CatalogXPathandXQueryExerciseschallenge" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>XML Course-Catalog XPath and XQuery Exercises (challenge-level)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-XMLCourse-CatalogXPathandXQueryExercisesextrapractice">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/XMLCourse-CatalogXPathandXQueryExercisesextrapractice" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>XML Course-Catalog XPath and XQuery Exercises (extra practice)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-XMLWorld-CountriesXPathandXQueryExercisescoreset">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/XMLWorld-CountriesXPathandXQueryExercisescoreset" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>XML World-Countries XPath and XQuery Exercises (core set)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-XMLWorld-CountriesXPathandXQueryExerciseschallenge">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/XMLWorld-CountriesXPathandXQueryExerciseschallenge" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>XML World-Countries XPath and XQuery Exercises (challenge-level)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-XMLWorld-CountriesXPathandXQueryExercisesextrapractice">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/XMLWorld-CountriesXPathandXQueryExercisesextrapractice" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>XML World-Countries XPath and XQuery Exercises (extra practice)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-XMLCourse-CatalogXSLTExercisescoreset">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/XMLCourse-CatalogXSLTExercisescoreset" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>XML Course-Catalog XSLT Exercises (core set)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-XMLCourse-CatalogXSLTExerciseschallenge">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/XMLCourse-CatalogXSLTExerciseschallenge" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>XML Course-Catalog XSLT Exercises (challenge-level)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-XMLCourse-CatalogXSLTExercisesextrapractice">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/XMLCourse-CatalogXSLTExercisesextrapractice" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>XML Course-Catalog XSLT Exercises (extra practice)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-XMLWorld-CountriesXSLTExercisescoreset">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/XMLWorld-CountriesXSLTExercisescoreset" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>XML World-Countries XSLT Exercises (core set)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-XMLWorld-CountriesXSLTExerciseschallenge">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/XMLWorld-CountriesXSLTExerciseschallenge" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>XML World-Countries XSLT Exercises (challenge-level)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-XMLWorld-CountriesXSLTExercisesextrapractice">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/XMLWorld-CountriesXSLTExercisesextrapractice" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>XML World-Countries XSLT Exercises (extra practice)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-244" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-244" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Unified Modeling Language
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-244">
+                        
+                            <li><span class="leftnav-subtitle">Prerequisite: Relational Databases</span></li>
+                        
+                        
+                            
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-09-01-uml-data-modeling">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/09-01-uml-data-modeling" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>UML Data Modeling</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-09-02-uml-to-relations">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/09-02-uml-to-relations" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>UML to Relations</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-UMLQuiz">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/problemsets#hashtag_UMLQuiz" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>UML Quiz</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-246" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-246" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Indexes
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-246">
+                        
+                            <li><span class="leftnav-subtitle">Prerequisite: SQL</span></li>
+                        
+                        
+                            
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-10-01-indexes">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/10-01-indexes" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Indexes</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-IndexesQuiz">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/problemsets#hashtag_IndexesQuiz" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Indexes Quiz</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-250" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-250" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Transactions
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-250">
+                        
+                            <li><span class="leftnav-subtitle">Prerequisite: SQL</span></li>
+                        
+                        
+                            
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-12-01-transactions-intro">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/12-01-transactions-intro" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Transactions Introduction</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-12-02-transactions-properties">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/12-02-transactions-properties" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Transactions Properties</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-12-03-isolation-levels">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/12-03-isolation-levels" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Isolation Levels</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-TransactionsQuiz">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/problemsets#hashtag_TransactionsQuiz" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Transactions Quiz</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-248" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-248" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Constraints and Triggers
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-248">
+                        
+                            <li><span class="leftnav-subtitle">Prerequisite: SQL</span></li>
+                        
+                        
+                            
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-11-01-motivation-overview">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/11-01-motivation-overview" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Motivation and Overview</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-11-02-constraints">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/11-02-constraints" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Constraints</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-11-03-referential-integrity">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/11-03-referential-integrity" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Referential Integrity</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-11-04-triggers-intro">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/11-04-triggers-intro" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Triggers Introduction</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-11-05-triggers-demo-part-1">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/11-05-triggers-demo-part-1" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Triggers Demo part 1</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-11-06-triggers-demo-part-2">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/11-06-triggers-demo-part-2" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Triggers Demo part 2</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-ConstraintsandTriggersQuiz">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/problemsets#hashtag_ConstraintsandTriggersQuiz" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Constraints and Triggers Quiz</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-SQLSocial-NetworkTriggersExercisescoreset">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/SQLSocial-NetworkTriggersExercisescoreset" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>SQL Social-Network Triggers Exercises (core set)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-SQLSocial-NetworkTriggersExerciseschallenge">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/SQLSocial-NetworkTriggersExerciseschallenge" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>SQL Social-Network Triggers Exercises (challenge-level)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-252" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-252" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Views
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-252">
+                        
+                            <li><span class="leftnav-subtitle">Prerequisite: SQL, Constraints and Triggers</span></li>
+                        
+                        
+                            
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-13-01-defining-using-views">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/13-01-defining-using-views" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Defining and Using Views</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-13-02-view-modifications-intro">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/13-02-view-modifications-intro" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>View Modifications Introduction</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-13-03-view-modifications-using-triggers">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/13-03-view-modifications-using-triggers" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>View Modifications Using Triggers</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-13-04-automatic-view-modifications">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/13-04-automatic-view-modifications" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Automatic View Modifications</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-13-05-materialized-views">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/13-05-materialized-views" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Materialized Views</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-ViewsQuiz">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/problemsets#hashtag_ViewsQuiz" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Views Quiz</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-SQLMovie-RatingViewModificationExercisescoreset">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises#hashtag_SQLMovie-RatingViewModificationExercisescoreset" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>SQL Movie-Rating View Modification Exercises (core set)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-SQLMovie-RatingViewModificationExerciseschallenge">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/SQLMovie-RatingViewModificationExerciseschallenge" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>SQL Movie-Rating View Modification Exercises (challenge-level)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-SQLMovie-RatingViewModificationExercisesextrapractice">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/interactive_exercises/SQLMovie-RatingViewModificationExercisesextrapractice" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>SQL Movie-Rating View Modification Exercises (extra practice)</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-254" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-254" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Authorization
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-254">
+                        
+                            <li><span class="leftnav-subtitle">Prerequisite: SQL, Views</span></li>
+                        
+                        
+                            
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-14-01-authorization">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/14-01-authorization" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Authorization</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-AuthorizationQuiz">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/problemsets#hashtag_AuthorizationQuiz" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Authorization Quiz</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-256" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-256" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Recursion
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-256">
+                        
+                            <li><span class="leftnav-subtitle">Prerequisite: SQL</span></li>
+                        
+                        
+                            
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-15-01-basic-recursive-with-statement">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/15-01-basic-recursive-with-statement" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Basic Recursive WITH Statement</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-15-02-basic-recursive-with-statement-demo">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/15-02-basic-recursive-with-statement-demo" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Basic Recursive WITH Statement Demo</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-15-03-nonlinear-mutual-recursion">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/15-03-nonlinear-mutual-recursion" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Nonlinear Mutual Recursion</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-RecursionQuiz">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/problemsets#hashtag_RecursionQuiz" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Recursion Quiz</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-258" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-258" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            On-Line Analytical Processing
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-258">
+                        
+                            <li><span class="leftnav-subtitle">Prerequisite: SQL</span></li>
+                        
+                        
+                            
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-16-01-olap">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/16-01-olap" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>OLAP</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-16-02-olap-demo">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/16-02-olap-demo" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>OLAP Demo</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-OLAPQuiz">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/problemsets#hashtag_OLAPQuiz" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>OLAP Quiz</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-260" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-260" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            NoSQL Systems
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-260">
+                        
+                            <li><span class="leftnav-subtitle">Prerequisite: SQL</span></li>
+                        
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-17-01-nosql-motivation">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/17-01-nosql-motivation" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>NoSQL Motivation</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-17-02-nosql-overview">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/17-02-nosql-overview" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>NoSQL Overview</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-778" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-778" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Exams
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-778">
+                        
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-final">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/exams/final" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Final Exam</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-Midterm-Exam">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/exams/Midterm-Exam" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Midterm Exam</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                            
+                                 
+                                     <li id="leftnav-li-video-finalreview">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/videos/finalreview" title="Video">
+                                            <em class="icon-facetime-video"></em>
+                                            <span>Final Exam Review</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-594" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-594" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Materials
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-594">
+                        
+                        
+                            
+                                
+                                     <li>
+                                        <a href="https://prod-c2g.s3.amazonaws.com/db/Winter2013/files/dbclass-slides-annotated.zip?Signature=x8jJ%2BSrKhcpyfY5AIPFM%2BSj62BU%3D&amp;Expires=1680180702&amp;AWSAccessKeyId=AKIAIINO3Q3NXKJA2PXQ">
+                                            <em class="icon-download-alt"></em>
+                                            <span>All Annotated Lecture Slides (zip file)</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                     <li>
+                                        <a href="https://prod-c2g.s3.amazonaws.com/db/Winter2013/files/dbclass-slides-unannotated.zip?Signature=kiD9vvU5qHiGnjDwtDE2JSRtHrE%3D&amp;Expires=1680180702&amp;AWSAccessKeyId=AKIAIINO3Q3NXKJA2PXQ">
+                                            <em class="icon-download-alt"></em>
+                                            <span>All Unannotated Lecture Slides (zip file)</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                     <li>
+                                        <a href="https://prod-c2g.s3.amazonaws.com/db/Winter2013/files/dbclass-script-files.zip?Signature=gptgzTi0vkekMPtR9s5RBDFD6%2FQ%3D&amp;Expires=1680180702&amp;AWSAccessKeyId=AKIAIINO3Q3NXKJA2PXQ">
+                                            <em class="icon-download-alt"></em>
+                                            <span>All Demo Script Files (zip file)</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-618" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-618" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Software Guides
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-618">
+                        
+                        
+                            
+                                
+                                     <li id="leftnav-li-page-xml-guide">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/pages/xml-guide" title="Page">
+                                            <em class="icon-book"></em>
+                                            <span>XML Quick Guide</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                     <li id="leftnav-li-page-sql-guide">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/pages/sql-guide" title="Page">
+                                            <em class="icon-book"></em>
+                                            <span>SQLite, MySQL, and PostgreSQL Guide</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                            
+                                
+                                     <li id="leftnav-li-page-ra-guide">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/pages/ra-guide" title="Page">
+                                            <em class="icon-book"></em>
+                                            <span>Relational Algebra Interpreter Guide</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-604" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-604" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Extra Problems
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-604">
+                        
+                        
+                            
+                                
+                                     <li id="leftnav-li-page-extra-problems">
+                                        <a href="http://class2go.stanford.edu/db/Winter2013/pages/extra-problems" title="Page">
+                                            <em class="icon-book"></em>
+                                            <span>Extra Problems</span>
+                                        </a>
+                                     </li>
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+            
+                <li class="accordion-group">
+                    <h3 id="sidebar-nav-heading-1050" class="nav-header accordion-heading" data-toggle="collapse" data-target="#sidebar-nav-1050" data-parent="#left-nav">
+                        <a href="#" class="leftnav-title closed">
+                            Surveys
+                            <span class="hidden-accessible">, collapsed, click to expand</span>
+                        </a>
+                    </h3>
+                    <ul class="nav nav-list collapse" id="sidebar-nav-1050">
+                        
+                        
+                            
+                                
+                                         
+                                            <li id="leftnav-li-exam-Post_course-Survey">
+                                                <a href="http://class2go.stanford.edu/db/Winter2013/surveys/Post_course-Survey" title="Exam">
+                                                    <em class="icon-pencil"></em>
+                                                    <span>Post-course Survey</span>
+                                                </a>
+                                            </li>
+                                         
+                                
+                            
+                        
+                    </ul>
+                    <ul class="nav nav-list">
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+             
+        
+        <ul class="nav nav-list">
+            <li><a href="http://class2go.stanford.edu/faq">Help/FAQs</a></li>
+            <li><a href="http://class2go.stanford.edu/contactus?pre=db&amp;post=Winter2013">Contact</a></li>
+            <li><a href="http://class2go.stanford.edu/accounts/profile">My profile</a></li>
+        </ul>
+    </ul>
+
+</div>
+
+        
+        
+<div id="c2g_layout_m_column" class="span6">
+	
+        
+            
+
+Movie
+<table style="font-size:90%; padding: 1px;border-spacing:
+0px; border-collapse: separate" border="1">
+<tbody><tr border="1"><th style="border-width:
+1px; padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">mID</th><th style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">title</th><th style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">year</th><th style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">director</th></tr>
+<tr border="1"><td style="border-width:
+1px; padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">101</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">Gone with the Wind</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">1939</td><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">Victor Fleming</td></tr><tr border="1"><td style="border-width:
+1px; padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">102</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">Star Wars</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">1977</td><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">George Lucas</td></tr><tr border="1"><td style="border-width:
+1px; padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">103</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">The Sound of Music</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">1965</td><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">Robert Wise</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">104</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">E.T.</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">1982</td><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">Steven Spielberg</td></tr><tr border="1"><td style="border-width:
+1px; padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">105</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">Titanic</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">1997</td><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">James Cameron</td></tr><tr border="1"><td style="border-width:
+1px; padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">106</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">Snow White</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">1937</td><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">&lt;null&gt;</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">107</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">Avatar</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">2009</td><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">James Cameron</td></tr><tr border="1"><td style="border-width:
+1px; padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">108</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">Raiders of the Lost
+Ark</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">1981</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">Steven Spielberg</td></tr></tbody></table>
+
+<br>
+
+Reviewer
+<table style="font-size:90%; padding: 1px;border-spacing:
+0px; border-collapse: separate" border="1">
+<tbody><tr border="1"><th style="border-width:
+1px; padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">rID</th><th style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">name</th></tr>
+<tr border="1"><td style="border-width:
+1px; padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">201</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">Sarah Martinez</td></tr><tr border="1"><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">202</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">Daniel Lewis</td></tr><tr border="1"><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">203</td><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">Brittany Harris</td></tr><tr border="1"><td style="border-width:
+1px; padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">204</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">Mike Anderson</td></tr><tr border="1"><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">205</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">Chris Jackson</td></tr><tr border="1"><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">206</td><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">Elizabeth Thomas</td></tr><tr border="1"><td style="border-width:
+1px; padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">207</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">James Cameron</td></tr><tr border="1"><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">208</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">Ashley White</td></tr></tbody></table>
+
+
+<br>
+
+Rating
+<table style="font-size:90%; padding: 1px;border-spacing:
+0px; border-collapse: separate" border="1">
+<tbody><tr border="1"><th style="border-width:
+1px; padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">rID</th><th style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">mID</th><th style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">stars</th><th style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">ratingDate</th></tr>
+<tr border="1"><td style="border-width:
+1px; padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">201</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">101</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">2</td><td style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">2011-01-22</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">201</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">101</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">4</td><td style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">2011-01-27</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">202</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">106</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">4</td><td style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">&lt;null&gt;</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">203</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">103</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">2</td><td style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">2011-01-20</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">203</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">108</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">4</td><td style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">2011-01-12</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">203</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">108</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">2</td><td style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">2011-01-30</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">204</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">101</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">3</td><td style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">2011-01-09</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">205</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">103</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">3</td><td style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">2011-01-27</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">205</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">104</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">2</td><td style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">2011-01-22</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">205</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">108</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">4</td><td style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">&lt;null&gt;</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">206</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">107</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">3</td><td style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">2011-01-15</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">206</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">106</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">5</td><td style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">2011-01-19</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">207</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">107</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">5</td><td style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">2011-01-20</td></tr><tr border="1"><td style="border-width: 1px;
+padding: 3px; margin: 4px; border-style: inset; border-color:
+gray;">208</td><td style="border-width: 1px; padding: 3px; margin: 4px;
+border-style: inset; border-color: gray;">104</td><td style="border-width: 1px; padding: 3px; margin: 4px; border-style:
+inset; border-color: gray;">3</td><td style="border-width: 1px; padding:
+3px; margin: 4px; border-style: inset; border-color:
+gray;">2011-01-02</td></tr></tbody></table>
+
+
+
+
+        
+    
+</div>
+
+	
+        
+    </div>
+</div>
+
+        
+    </div>
+
+    
+
+<div class="row-fluid class2go">
+    <small><a href="http://class2go.stanford.edu/">Powered by Class2Go</a></small>
+</div>
+
+
+<div id="global-footer" class="footer hidden-phone">
+    <div class="container">
+        <div class="row">
+            <div id="bottom-logo" class="span2"><a href="http://www.stanford.edu/" style="border: none; "><img src="SQL%20Movie%20Data_files/footer-stanford-logo.png" alt="Stanford University" width="100"></a></div>
+                <div id="bottom-text" class="span10">
+                    <div id="bottom-menu">
+                        <ul class="unstyled">
+                            <li><a href="http://www.stanford.edu/">Stanford University Home</a></li>
+                            <li><a href="http://visit.stanford.edu/plan/maps.html">Maps &amp; Directions</a></li>
+                            <li><a href="http://www.stanford.edu/search/">Search Stanford</a></li>
+                            <li><a href="http://class2go.stanford.edu/terms_of_service">Terms of Use</a></li>
+                            <li><a href="http://class2go.stanford.edu/terms_of_service#copyright">Copyright Complaints</a></li>
+                            <li><a href="http://class2go.stanford.edu/contactus">Technical Support</a></li>
+                        </ul>
+                    </div>
+                    <p class="vcard">© <span class="fn org">Stanford University</span>, <span class="adr"><span class="locality">Stanford</span>, <span class="region">California</span> <span class="postal-code">94305</span></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    
+    <script type="text/javascript" src="SQL%20Movie%20Data_files/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="SQL%20Movie%20Data_files/bootstrap.js"></script>
+    <script type="text/javascript" src="SQL%20Movie%20Data_files/app.js"></script>
+    <script type="text/javascript">
+        //alert(navigator.userAgent);
+        var getServerTime = function() {
+            $.ajax("/server_time", {
+                cache:false,
+                success:function(data){
+                    var serverTime = JSON.parse(data);
+                    var serverHours = serverTime.hour;
+                    var serverMinutes = serverTime.minute;
+                    if (serverHours >= 12) { ampm = "PM" } else { ampm = "AM" }
+                    displayTime(serverHours, serverMinutes, ampm);
+                }, 
+                error:function(data){
+                    return;
+                }
+            });
+        };
+        
+        var displayTime = function(h, m, ap) {
+            if (m < 10) {
+                m = '0' + m;
+            }
+            if (h > 12) {
+                h = h - 12;
+            }
+            else if (h == 0) h = 12; //0 a.m. -> 12 a.m.
+            
+            $('#clockHours').removeClass().addClass('hour-' + h);
+            $('#clockMinutes').removeClass().addClass('minute-' + m);
+            $('#clock #clock-bubble .hours').text(h);
+            $('#clock #clock-bubble .minutes').text(m);
+            $('#clock #clock-bubble .ampm').text(ap);
+        };
+
+        // increments time passed in by 1 minute
+        var adjustLocalTime = function(){
+            var h = parseInt($('#clock #clock-bubble .hours').text()); 
+            var m = parseInt($('#clock #clock-bubble .minutes').text()); 
+            var ap = $('#clock #clock-bubble .ampm').text();
+                    
+            var localM, localH, localAP;
+
+            // only major changes are when flipping over :59 to :00
+            if (m >= 59) {
+                localM = 0;
+                // hours not displayed in 24 hour format, so no need to subtract 12;
+                // just handle 12:59 to 1:00, >= is for safety 
+                localH = (h >= 12) ? 1 : (h + 1);
+                if (localH == 12 && ap.toUpperCase() == "AM") {
+                    localAP = "PM";
+                } else if (localH == 12 && ap.toUpperCase() == "PM") {
+                    localAP = "AM";
+                } else {
+                    localAP = ap;
+                } 
+            } else {
+                localM = m + 1;
+                localH = h;
+                localAP = ap;
+            }
+
+            displayTime(localH, localM, localAP);
+        };
+        
+        $(function(){
+            getServerTime();
+            setInterval(function(){
+                $('#clock #clock-bubble').fadeOut();
+                adjustLocalTime();
+            }, 60000);
+            
+            $('#clock').hover(function(){
+                $(this).css('cursor', 'pointer');
+                getServerTime();
+                $('#clock #clock-bubble').fadeIn();
+            });
+        });
+        
+        /*******************************************************************************************
+	Make Footer Sticky
+	
+	Removed for now until I can figure out the left nav script behavior...
+	
+        function stickyFooter(){
+            var windowHeight = $(window).height(); //get current window height
+            var initContentHeight = $("#viewport").height() + 0; //get page content height
+            var contentHeight = initContentHeight;
+            var footerHeight = $("#global-footer").height() + parseInt($("#global-footer").css('paddingTop')) + parseInt($("#global-footer").css('paddingBottom')) + $(".class2go").height() + 0; //get footer height
+            var footerOffset = $('#global-footer').offset().top;
+            if ((footerOffset + footerHeight ) < windowHeight) {
+                contentHeight = initContentHeight + windowHeight - (footerOffset + footerHeight);
+                $("#viewport").height(contentHeight);
+            }
+            $(window).resize(function() {
+                windowHeight = $(window).height();
+                if ((footerOffset + footerHeight) < windowHeight) {
+                    contentHeight = initContentHeight + windowHeight - (footerOffset + footerHeight);
+                    $("#viewport").height(contentHeight);
+                } else {
+                    $("#viewport").height(initContentHeight);
+                }
+            });
+        }
+        stickyFooter();
+        */
+        
+        /*******************************************************************************************
+	Accessibility toggle
+	*/
+        
+        var menuVoiceoverSetup = function() {
+            var expanded = ", expanded, click to collapse";
+            var collapsed = ", collapsed, click to expand";
+            
+            /*
+                Initial Setting: collapsed
+            .focus
+                collapsed    1st voiceover - good
+            .keydown
+                expanded    2nd voiceover - !!!!
+            .keypress
+            .click
+                collapsed    3rd voiceover - good
+            */
+            $('.dropdown a, .accordion-heading a').keydown(function(event){
+                if ($(this).hasClass('closed')) {
+                    $('.hidden-accessible', this).text(expanded);
+                } else {
+                    $('.hidden-accessible', this).text(collapsed);
+                }
+                $(this).toggleClass('closed');
+            });
+            
+            $('.dropdown a, .accordion-heading a').blur(function(){
+                $('.hidden-accessible', this).text(collapsed);
+                $(this).addClass('closed');
+            });
+        }
+        
+        $(document).ready(function (){
+            menuVoiceoverSetup();
+        });
+        
+    </script>
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      
+      _gaq.push(['_setAccount', 'UA-33859275-1']);
+      
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+<script>
+    $(document).ready(function(){
+                        $("#c2g_layout_l_column").load("/db/Winter2013/leftnav",
+                            function() {
+                                c2g.installLeftNavChevron();
+                                $("#sidebar-nav-heading-238").removeClass("collapsed").addClass("expanded");
+                                $("#sidebar-nav-238").addClass("in collapse");
+                                $("#leftnav-li-page-moviedata").addClass("current");
+                        });
+                      });
+</script>
+
+
+
+</body></html>
