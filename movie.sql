@@ -1,14 +1,14 @@
-1) SELECT title FROM Movie
+1) Select title from Movie
 WHERE director="Steven Spielberg";
 
 
-2) SELECT distinct year
+2) Select distinct year
 from Movie join Rating using(mID)
 where stars between 4 and 5
 order by year asc;
 
 
-3) SELECT title
+3) Select title
 from Movie
 where Movie.mID not in (select mID from Rating);
 
@@ -18,7 +18,7 @@ from Rating join Reviewer using(rID)
 where Rating.ratingDate is null;
 
 5) Select distinct name, title, stars, ratingDate
-from Rating neural join Reviewer neural join Movie
+from Rating netural join Reviewer netural join Movie
 order by name, title, stars;
 
 6) Select distinct name, title
@@ -35,3 +35,57 @@ group by Rating.mID order by title;
 where Movie.mID=Rating.mID
 group by Movie.mID
 order by arating DESC, title;
+
+9) Select name
+from Reviewer, ( select rID, count(stars) as count
+from Rating
+group by rID ) RateCount
+where Reviewer.rID = RateCount.rID
+and RateCount.count >= 3;
+
+
+
+EXTRA
+
+
+1) select distinct name
+from Reviewer join Rating using(rID)
+where rID in (
+select rID
+from Rating join Movie using(mID)
+where title = "Gone with the Wind");
+
+2) select distinct name, title, stars
+from Reviewer join Rating  using(rID) 
+join Movie using(mID)
+where name ="director";
+
+3) select name
+from Reviewer
+union
+select title
+from Movie
+order by name, title;
+
+4) select title
+from Movie
+where mID not in (select mID
+from Rating
+where rID in (select rID
+from Reviewer
+where name = "Chris Jackson") );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
