@@ -18,7 +18,7 @@ from Rating join Reviewer using(rID)
 where Rating.ratingDate is null;
 
 5) Select distinct name, title, stars, ratingDate
-from Rating neural join Reviewer neural join Movie
+from Rating netural join Reviewer netural join Movie
 order by name, title, stars;
 
 6) Select distinct name, title
@@ -35,3 +35,41 @@ group by Rating.mID order by title;
 where Movie.mID=Rating.mID
 group by Movie.mID
 order by arating DESC, title;
+
+9) select Reviewer.name
+from Reviewer, Rating
+where Rating.rID = Reviewer.rID
+group by Rating.rID
+Having COUNT(Rating.rID) >= 3;
+
+EXTRA
+
+Find the names of all reviewers who rated Gone with the Wind:
+
+select distinct name
+from Reviewer join Rating using (rid)
+where mid in (select mid 
+              from movie 
+              where title = 'Gone with the Wind');
+
+
+For any rating where the reviewer is the same as the director of the movie, return the reviewer name, movie title, and number of stars:
+
+
+select distinct name, title, stars
+from Rating join Reviewer using(rID) join Movie using(mID)
+where name = director;
+
+Return all reviewer names and movie names together in a single list, alphabetized. (Sorting by the first name of the reviewer and first word in the title is fine; no need for special processing on last names or removing "The".)
+
+select name
+from Reviewer
+union
+select title
+from Movie
+order by name, title;
+
+
+
+
+
