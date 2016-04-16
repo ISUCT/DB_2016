@@ -35,3 +35,40 @@ where R1.mID in( select mID as counter from Rating R2 where R2.rID = R1.rID grou
 select title,max(stars) from Movie, Rating 
 where Movie.mID=Rating.mID 
 group by Rating.mID order by title;
+
+/*Q8 
+select title, AVG(stars) AS average
+from Movie
+inner join Rating USING(mId)
+group by mId
+order by average DESC, title;
+
+/*Q9
+select name
+from Reviewer
+where (select count(*) from Rating where Rating.rId = Reviewer.rId) >= 3;
+
+Challenge 
+
+select title, max(stars)-min(stars) as spread
+from Movie natural join Rating
+group by mID
+order by spread DESC, title;
+
+select max(a1)-min(a1) from
+(select avg(av1) a1 from
+(select avg(stars) av1 from rating r join movie m on r.mid=m.mid where m.year < 1980
+group by r.mid)
+union
+select avg(av2) a1 from
+(select avg(stars) av2 from rating r join movie m on r.mid=m.mid where m.year > 1980
+group by r.mid));
+
+select title, director 
+from movie 
+where director in (select director 
+                  from (select director, count(title) as s 
+                        from movie 
+                        group by director) as t
+                  where t.s>1)
+order by 2,1; 
