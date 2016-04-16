@@ -29,7 +29,7 @@ select distinct name, title
 from Rating R1 natural join Movie natural join Reviewer
 where R1.mID in( select mID as counter from Rating R2 where R2.rID = R1.rID group by R2.mID having count(*) = 2) 
  and (select stars from Rating R3 where R3.rID = R1.rID and R1.mID = R3.mID order by R3.ratingDate) 
-  < (select stars from Rating R3 where R3.rID = R1.rID and R1.mID = R3.mID order by R3.ratingDate DESC);
+  < (select stars from Rating R3 where R3.rID = R1.rID and R1.mID = R3.mID order by R3.ratingDate desc);
 
 /*Q7
 select title,max(stars) from Movie, Rating 
@@ -37,11 +37,11 @@ where Movie.mID=Rating.mID
 group by Rating.mID order by title;
 
 /*Q8 
-select title, AVG(stars) AS average
+select title, avg(stars) as average
 from Movie
-inner join Rating USING(mId)
+inner join Rating using(mId)
 group by mId
-order by average DESC, title;
+order by average desc, title;
 
 /*Q9
 select name
@@ -53,7 +53,7 @@ Challenge
 select title, max(stars)-min(stars) as spread
 from Movie natural join Rating
 group by mID
-order by spread DESC, title;
+order by spread desc, title;
 
 select max(a1)-min(a1) from
 (select avg(av1) a1 from
