@@ -29,3 +29,13 @@ where R1.mID in( select mID as counter from Rating R2 where R2.rID = R1.rID grou
 from Movie natural join Rating
 group by mID
 order by title;
+
+8) select title, avg(stars) as average
+from Movie
+inner join Rating using(mId)
+group by mId
+order by average desc, title;
+
+9) select name
+from Reviewer
+where (select count(*) from Rating where Rating.rId = Reviewer.rId) >= 3;
