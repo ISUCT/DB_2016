@@ -1,0 +1,11 @@
+
+
+\project_{pizza}(\select_{age>20 and gender="female"}Person \join Eats);
+
+\project_{name}(\select_{pizzeria="Straw Hat"}Serves \join (\select_{gender="female"}Person \join Eats));
+
+\project_{pizzeria}(\project_{pizza}(\select_{name="Amy"or name="Fay"}Eats) \join (\select_{price<10}Serves));
+
+\project_{pizzeria}(\project_{pizza}(\select_{name="Amy"}Eats) \intersect (\project_{pizza}\select_{name="Fay"}Eats) \join (\select_{price<10}Serves));
+
+\project_{name}(\select_{pizzeria="Dominos"}Serves \join Eats) \diff \project_{name}(\select_{pizzeria="Dominos"}Frequents); 
