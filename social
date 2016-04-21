@@ -1,0 +1,17 @@
+10) Select name From Highschooler
+where id in ( Select ID1 From friend where id1 = id and id2 IN ( Select id From Highschooler where name = "Gabriel"));
+
+11)Select h1.name, h1.grade, h2.name, h2.grade
+   From Highschooler as h1 
+   join likes as l on l.id1 = h1.id
+   join highschooler as h2 on h2.id = l.id2
+   where h2.grade <= h1.grade - 2
+
+12)
+
+
+13)
+
+
+14) Select name, grade from highschooler 
+    where id in ( Select id2 from likes group by id2 having count(id1) > 1 )
