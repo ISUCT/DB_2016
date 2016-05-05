@@ -17,10 +17,6 @@
 <!ELEMENT Prereq (#PCDATA)>
 <!ELEMENT Lecturer (First_Name | Middle_Initial | Last_Name)*>
 ]>
-
-
-<Course_Catalog>
-
   <Department Code="CS">
     
     <Title>Computer Science</Title>
@@ -253,4 +249,8 @@
     
   </Department>
   
+<<<<<<< HEAD
 </Course_Catalog>
+=======
+</Course_Catalog>
+>>>>>>> afde7b1d195a4a0bcf01243c9c7e4fe7e33290a5
