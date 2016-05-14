@@ -11,3 +11,7 @@
   mID in (select mID from (select Rating.mID,avg(stars) as average  
   from Movie, Rating where Movie.mID=Rating.mID 
   group by Rating.mID, year) where average>=4);
+
+4) delete from rating
+where mID in (select mID from movie where year <1970 or year > 2000)
+and stars < 4;
