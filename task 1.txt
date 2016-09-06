@@ -1,0 +1,29 @@
+create table book(
+number int() NOT NULL,
+name varchar() NOT NULL,
+autor varchar() NOT NULL, 
+genre varchar() NOT NULL,
+PRIMARY KEY(number)) ;
+
+create table chitatel(
+number int,
+name varchar,
+pol varchar,
+PRIMARY KEY(number));
+
+
+insert into chitatel ([number]) values (1, 2, 3, 4, 5); 
+
+insert into chitatel ([name]) values (Kate Jackson, Steve Jobs, Oly Osborn, Kelly Kit, Jummy Cold);
+
+insert into chitatel ([pol]) values (f, m, f, f, m);
+
+1) 
+SELECT chitatel.Name, book.Name
+FROM chitatel, book, chitatelbook
+WHERE (book.N=chitatelbook.Nbook) and (chitatel.N=chitatelbook.Nchitatel);
+
+2)
+select Name from chitatel
+where pol = f
+order by asc;
