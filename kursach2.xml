@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<report>
+
+  <header>
+    <generated>31.10.2016 13:20:48</generated>
+    <server>PostgreSQL 9.5 (localhost:5432)</server>
+    <database>Trigger</database>
+    <schema>public</schema>
+    <title>Список таблиц</title>
+  </header>
+
+  <section id="s1" number="1" name="Tables">
+    <table>
+      <columns>
+        <column id="c1" number="1" name="Таблица" />
+        <column id="c2" number="2" name="Владелец" />
+        <column id="c3" number="3" name="Комментарий" />
+      </columns>
+      <rows>
+        <row id="r1" number="1" c1="Home" c2="postgres" c3="" />
+        <row id="r2" number="2" c1="Home_People" c2="postgres" c3="" />
+        <row id="r3" number="3" c1="People" c2="postgres" c3="" />
+      </rows>
+    </table>
+  </section>
+
+</report>

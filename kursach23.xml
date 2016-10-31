@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<report>
+
+  <header>
+    <generated>31.10.2016 13:21:26</generated>
+    <server>PostgreSQL 9.5 (localhost:5432)</server>
+    <database>Trigger</database>
+    <schema>public</schema>
+    <title>Отчёт по свойствам таблицы - Home</title>
+  </header>
+
+  <section id="s1" number="1" name="Свойства таблицы">
+    <table>
+      <columns>
+        <column id="c1" number="1" name="Свойство" />
+        <column id="c2" number="2" name="Значение" />
+      </columns>
+      <rows>
+        <row id="r1" number="1" c1="Имя" c2="Home" />
+        <row id="r2" number="2" c1="OID" c2="16473" />
+        <row id="r3" number="3" c1="Владелец" c2="postgres" />
+        <row id="r4" number="4" c1="Табличное пространство" c2="pg_default" />
+        <row id="r5" number="5" c1="ACL" c2="" />
+        <row id="r6" number="6" c1="Тип данных" c2="" />
+        <row id="r7" number="7" c1="Первичный ключ" c2="ID_Home" />
+        <row id="r8" number="8" c1="Строк (приблизительно)" c2="0" />
+        <row id="r9" number="9" c1="Коэффициент заполнения" c2="" />
+        <row id="r10" number="10" c1="Строк (сосчитано)" c2="0" />
+        <row id="r11" number="11" c1="Наследует таблицы" c2="Нет" />
+        <row id="r12" number="12" c1="Число наследованных таблиц" c2="0" />
+        <row id="r13" number="13" c1="Нежурналируемая?" c2="Нет" />
+        <row id="r14" number="14" c1="Имеет OIDы?" c2="Нет" />
+        <row id="r15" number="15" c1="Системная таблица?" c2="Нет" />
+        <row id="r16" number="16" c1="Комментарий" c2="" />
+      </rows>
+    </table>
+    <sql>-- Table: public.&#34;Home&#34;
+
+-- DROP TABLE public.&#34;Home&#34;;
+
+CREATE TABLE public.&#34;Home&#34;
+(
+  &#34;ID_Home&#34; integer NOT NULL,
+  &#34;Home&#34; character varying(40),
+  CONSTRAINT home_pkey PRIMARY KEY (&#34;ID_Home&#34;)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.&#34;Home&#34;
+  OWNER TO postgres;
+</sql>
+  </section>
+
+</report>

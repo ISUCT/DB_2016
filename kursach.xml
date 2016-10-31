@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<report>
+
+  <header>
+    <generated>31.10.2016 13:20:02</generated>
+    <server>PostgreSQL 9.5 (localhost:5432)</server>
+    <database>Trigger</database>
+    <title>Список схем</title>
+  </header>
+
+  <section id="s1" number="1" name="Schemas">
+    <table>
+      <columns>
+        <column id="c1" number="1" name="Схема" />
+        <column id="c2" number="2" name="Владелец" />
+        <column id="c3" number="3" name="Комментарий" />
+      </columns>
+      <rows>
+        <row id="r1" number="1" c1="public" c2="postgres" c3="standard public schema" />
+      </rows>
+    </table>
+  </section>
+
+</report>
