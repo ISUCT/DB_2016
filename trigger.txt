@@ -1,0 +1,13 @@
+create function del_lekarstvo() returns trigger as $$
+BEGIN
+if (select count(*) from lekarstvo a where a.kod_lekarstva=OLD.kod_lekarstva)>0
+THEN
+delete from Lekarstvo a where a.kod_lekarstva=OLD.kod_lekarstva;
+END IF;
+RETURN OLD;
+END;
+$$ Language plpgsql;
+
+
+
+create trigger tr_del_lekarstvo BEFORE DELETE ON lekarstvo_v_apteku FOR EACH ROW execute procedure del_lekarstvo();
